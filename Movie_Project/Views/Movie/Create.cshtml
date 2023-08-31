@@ -1,0 +1,141 @@
+﻿@model Movie_Project.Models.Movie
+
+@{
+    ViewData["Title"] = "Create Movie";
+    //Layout = "_LayoutForAdmin";
+}
+<head>
+    <style>
+        .form-control {
+            border: 0;
+            background: none;
+            display: inline;
+            margin: 5px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 10px 10px;
+            /*width: 250px;*/
+            height: 30px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s
+        }
+
+            .form-control:focus {
+                width: 300px;
+                border-color: #2ecc71;
+                color:black
+            }
+
+        .form-group input[type="submit"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            padding: 10px 5px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+            width: 70px;
+            height: 40px;
+            
+            
+        }
+
+        .form-group input[type="submit"]:hover {
+            background: #2ecc71
+        }
+
+        .btnbtn-primary{
+            width:60px;
+        }
+
+      
+
+     
+
+    </style>
+</head>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"><font color="white">Title: </font></label><br />
+                <input asp-for="Title" class="form-control" style="border-radius: 24px; border: 2px solid #3498db;color: white;" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"><font color="white">Image: </font></label><br />
+                <input asp-for="Image" class="form-control" type="file" name="img_file" accept="image/png, image/gif, image/jpeg, image/jpg" style="border-radius: 24px;border: 2px solid #3498db;color: white;" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="actors" class="control-label"><font color="white">actors: <sub>Please enter the actors with comma (,) to seperate each actor</sub></font></label><br />
+                <input asp-for="actors" class="form-control" style="border-radius: 24px; border: 2px solid #3498db;color: white;" />
+                <span asp-validation-for="actors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FilmProducer" class="control-label"><font color="white">FilmProducer: </font></label><br />
+                <input asp-for="FilmProducer" class="form-control" style="border-radius: 24px;border: 2px solid #3498db;color: white;" />
+                <span asp-validation-for="FilmProducer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"><font color="white">Summary: </font></label><br />
+                <input asp-for="Description" class="form-control" style="border-radius: 24px;border: 2px solid #3498db;color: white;" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfRelease" class="control-label"><font color="white">YearOfRelease: </font></label><br />
+                <input asp-for="YearOfRelease" class="form-control" style="border-radius: 24px;border: 2px solid #3498db;color: white" />
+                <span asp-validation-for="YearOfRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rating" class="control-label"><font color="white">rating: </font></label><br />
+                <input asp-for="rating" class="form-control" style="border-radius: 24px; border: 2px solid #3498db;color: white" />
+                <span asp-validation-for="rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duartion" class="control-label"><font color="white">Duartion: </font></label><br />
+                <input asp-for="Duartion" class="form-control" style="border-radius: 24px ; border: 2px solid #3498db;color: white" />
+                <span asp-validation-for="Duartion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WatchLink" class="control-label"><font color="white">WatchLink:</font></label><br />
+                <input asp-for="WatchLink" class="form-control" style="border-radius: 24px ; border: 2px solid #3498db;color: white" />
+                <span asp-validation-for="WatchLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownloadeLink" class="control-label"><font color="white">DownloadeLink: </font></label><br />
+                <input asp-for="DownloadeLink" class="form-control" style="border-radius: 24px ; border: 2px solid #3498db;color: white" />
+                <span asp-validation-for="DownloadeLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenerId" class="control-label">Genre: </label><br />
+                <select style="border: 1px solid ; border-radius:0px; background-color:white;color:black; padding-top:3px; padding-bottom:3px; border-radius: 24px; border: 2px solid #3498db" asp-for="GenerId" class="form-control" asp-items="ViewBag.GenerId">
+                    @*<option></option>*@
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btnbtn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

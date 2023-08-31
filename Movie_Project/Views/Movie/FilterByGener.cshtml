@@ -1,0 +1,225 @@
+﻿@using Movie_Project.Models;
+@model IEnumerable<Movie_Project.Models.Movie>;
+
+
+@{
+    ViewData["Title"] = "Filter Result";
+}
+
+<head>
+    <style>
+        .form-control {
+            border: 0;
+            background: none;
+            display: inline;
+            margin: 5px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 10px 10px;
+            width: 100px;
+            height: 30px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s
+        }
+
+            .form-control:focus {
+                width: 300px;
+                border-color: #2ecc71
+            }
+
+        .control-label {
+            color: white
+        }
+
+        .btnbtn-primary {
+            border: 0;
+            background-color: rgba(255,0,0,0);
+            display: inline;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+            height: 30px;
+            width: 105px;
+        }
+
+            .btnbtn-primary:hover {
+                background: #2ecc71
+            }
+
+
+
+        form {
+            margin-left: 10px;
+            display: inline;
+        }
+
+        p {
+            margin: 10px;
+            display: inline;
+        }
+
+        .listitem {
+            display: inline;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: rgba(255,0,0,0);
+            color: white
+        }
+
+            .listitem:hover {
+                background-color: blueviolet;
+                border-radius: 10px;
+                border: 20px;
+            }
+
+        }
+
+        ul {
+            list-style: none;
+            display: inline;
+        }
+
+        .pagelink {
+            text-decoration: none;
+            margin-left: 3px;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+            .pagelink:hover {
+                background-color: darkviolet;
+                border-radius: 10px;
+                border: 20px;
+            }
+    </style>
+</head>
+
+<div id="content" class="site-content">
+    <div id="primary" class="content-area column full">
+        <main id="main" class="site-main">
+            <div class="grid portfoliogrid">
+
+                @if (!Model.Any())
+                {
+                    <div>
+                        <form asp-controller="Movie" asp-action="Search" method="post">
+                            <p>
+                                <label class="control-label">Name: </label>
+                                <input class="form-control" name="Title" />@*value="@TempData["Title"]"*@
+                                <input type="submit" value="Search" class="btnbtn-primary" />
+
+                            </p>
+                        </form>
+                        <form asp-controller="Movie" asp-action="FilterByYear" method="post">
+                            <p>
+                                <label class="control-label">Year: </label>
+                                <input class="form-control" name="YearOfRelease" value="@TempData["Year"]" />
+                                <input type="submit" value="FilterByYear" class="btnbtn-primary" />
+                            </p>
+                        </form>
+                        <form asp-controller="Movie" asp-action="FilterByGener" method="post">
+                            <p>
+                                <label class="control-label">Gener Name: </label>
+                                <input class="form-control" name="Gener" />@*value="@TempData["Gener"]"*@
+                                <input type="submit" value="FilterByGener" class="btnbtn-primary" />
+                            </p>
+                            
+                        </form>
+                    </div>
+
+                    <br />
+                    <h3 style="margin:20px">Not Found</h3>
+
+                    <br />
+
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <article class="hentry">
+                            <header class="entry-header">
+                                <div class="entry-thumbnail">
+                                    <a asp-action="Details" asp-route-id="@item.MovieId">
+                                        <img src="~/Img/@item.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1">
+                                    </a>
+                                    <h2 class="entry-title">
+                                        <a asp-action="Details" asp-route-id="@item.MovieId" rel="bookmark">@item.Title</a>
+                                    </h2>
+
+                                </div>
+
+                            </header>
+                        </article>
+                    }
+                }
+                @*@foreach (var item in Model)
+                {
+                    <article class="hentry">
+                        <header class="entry-header">
+                            <div class="entry-thumbnail">
+                                <a asp-action="Details" asp-route-id="@item.MovieId">
+                                    @*href="/Movie/Details/@item.MovieId
+                                    <img src="~/Img/@item.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1">
+                                </a>
+                                <h2 class="entry-title">
+                                    <a asp-action="Details" asp-route-id="@item.MovieId" rel="bookmark">@item.Title</a>
+                                </h2>
+
+                            </div>
+
+                        </header>
+                    </article>
+                }*@
+
+            </div>
+            <!-- .grid -->
+         
+            <br />
+
+        </main>
+        <!-- #main -->
+    </div>
+    <!-- #primary -->
+    @if (!Model.Any())
+    {
+        <p></p>
+
+    }
+    else
+    {
+        <div>
+            <center>
+
+
+                <ul style="color:white">
+                    @{
+                        for (int i = 1; i <= 5; i++)
+                        {
+                            <li style="color:white" class="listitem"><a class="pagelink" style="color:white" asp-action="Index" asp-route-page="@i">@i</a></li>
+
+                        }
+                    }
+
+                </ul>
+                <br />
+            </center>
+
+        </div>
+    }
+</div>
+<!-- #content -->
+
+<script src='~/js/jquery.js'></script>
+<script src='~/js/plugins.js'></script>
+<script src='~/js/scripts.js'></script>
+<script src='~/js/masonry.pkgd.min.js'></script>
+<script src='~/js/validate.js'></script>

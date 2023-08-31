@@ -1,0 +1,128 @@
+﻿@model Movie_Project.Models.Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+    //Layout = "_LayoutForAdmin";
+}
+<html lang="en-US">
+
+<head>
+    <style>
+        .form-group input[type="submit"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            padding: 10px 5px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+            width: 70px;
+            height: 40px;
+        }
+
+            .form-group input[type="submit"]:hover {
+                background: #2ecc71
+            }
+
+        .btnbtn-primary {
+            width: 60px;
+        }
+
+        p {
+            color: white
+        }
+
+    </style>
+
+</head>
+<body class="home page page-template page-template-template-portfolio page-template-template-portfolio-php">
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <div id="content" class="site-content">
+            <div id="primary" class="content-area column two-thirds single-portfolio">
+                <main id="main" class="site-main">
+
+                    <article class="portfolio hentry">
+                        <header class="entry-header">
+                            <div class="entry-thumbnail">
+                                <img width="800" height="533" src="~/Img/@Model.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1" />
+                            </div>
+                            <h1 class="entry-title"><font color="white">@Html.DisplayFor(model => model.Title)</font></h1>
+                        </header>
+                        <div class="entry-content">
+                            <p>
+                                <font color="white">Genre: @Html.DisplayFor(model => model.gener)</font>
+                            </p>
+                            <p>
+                                <font color="white"> by: @Html.DisplayFor(model => model.FilmProducer)</font>
+                            </p>
+                            <p>
+                                <font color="white">Release year: @Html.DisplayFor(model => model.YearOfRelease)</font>
+                            </p>
+                            <p>
+                                <font color="white">Rating: @Html.DisplayFor(model => model.rating)</font>
+                            </p>
+                            <p>
+                                <font color="white">Duration: @Html.DisplayFor(model => model.Duartion)</font>
+                            </p>
+                            <blockquote>
+                                <p>
+                                    <font color="white">Summary: @Html.DisplayFor(model => model.Description)</font>
+                                </p>
+                            </blockquote>
+                            <p>
+                                <font color="white">
+                                    Cast:
+                                </font>
+                                @{
+                                    string phrase = @Model.actors;
+                                    string[] words = phrase.Split(',');
+                                    <font color="white">
+                                        <ul>
+                                            @{
+                                                foreach (var word in words)
+                                                {
+                                                    <li><font color="white">@word</font></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </font>
+                                }
+
+                            </p>
+                            
+
+                        </div>
+                    </article>
+                    <!-- .navigation -->
+
+                </main>
+                <!-- #main -->
+            </div>
+            <!-- #primary -->
+
+        </div>
+        <!-- #content -->
+
+        <script src='~/js/jquery.js'></script>
+        <script src='~/js/plugins.js'></script>
+        <script src='~/js/scripts.js'></script>
+        <script src='~/js/masonry.pkgd.min.js'></script>
+        <script src='~/js/validate.js'></script>
+
+
+
+        <form asp-action="Delete" class="form-group">
+            <input type="hidden" asp-for="MovieId" />
+            <input type="submit" value="Delete" class="btnbtn-primary" />
+
+        </form>
+    </div>
+</body>
+</html>

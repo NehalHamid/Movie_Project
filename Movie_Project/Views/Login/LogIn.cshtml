@@ -1,0 +1,82 @@
+﻿@using Movie_Project.Models;
+@model Movie_Project.Models.Login
+
+@{
+    ViewData["Title"] = "Log In";
+}
+
+@*@model User;*@
+
+<html>
+<head>
+	<link href="~/css/LogInStyle.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+                    <form asp-action="LogIn" asp-controller="Login" class="box">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <h1 style="text-align:center;color:white ">Login</h1>
+                        <p class="text-muted" style="color:white;font-size:10px"> Please enter your username and password!</p>
+                      
+                        <div class="form-group">
+                            @*<label asp-for="Email" class="control-label"></label>*@
+                            <input asp-for="Email" class="form-control" placeholder="Email" />  @*name="UserEmail"*@
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            @*<label asp-for="Password" class="control-label"></label>*@
+                            <input asp-for="Password" class="form-control" placeholder="Password" /> @*name="UserPassword"*@
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    
+                        <div class="form-group">
+                            <input type="submit" value="Log In" class="btnbtn-primary" />
+                        </div>
+                        <p style="color:white;text-align:center">Don't you have an Account? <a style="color:white" asp-area="" asp-controller="User" asp-action="SignUp"> SignUp Now!</a></p>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+</html>
+@*<h4>Login</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+*@

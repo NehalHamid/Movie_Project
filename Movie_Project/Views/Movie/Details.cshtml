@@ -1,0 +1,119 @@
+﻿@model Movie_Project.Models.Movie
+
+@{
+    ViewData["Title"] = "Details of Movie";
+    //Layout = "_LayoutForUser";
+}
+
+<html lang="en-US">
+<head>
+
+    <title>@Model.Title</title>
+    <style>
+        .linkwatch, .linkdownload {
+            background-color: #333;
+            color: white;
+            margin: 30px;
+            padding-right: 50px;
+            padding-left: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+            .linkwatch:hover{
+                background-color:rebeccapurple;
+                
+            }
+
+            .linkdownload:hover{
+                background-color: rebeccapurple;
+                
+            }
+
+            p {
+            color: white;
+        }
+    </style>
+
+</head>
+<body class="home page page-template page-template-template-portfolio page-template-template-portfolio-php">
+
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area column two-thirds single-portfolio">
+            <main id="main" class="site-main">
+
+                <article class="portfolio hentry">
+                    <header class="entry-header">
+                        <div class="entry-thumbnail">
+                            <img width="800" height="533" src="~/Img/@Model.Image" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1" />
+                        </div>
+                        <h1 class="entry-title">@Html.DisplayFor(model => model.Title)</h1>
+                    </header>
+                    <div class="entry-content">
+                        <p>
+                            <font color="white">Genre: @Html.DisplayFor(model => model.gener.genre)</font>
+                        </p>
+                        <p>
+                            <font color="white">Produced by: @Html.DisplayFor(model => model.FilmProducer)</font>
+                        </p>
+                        <p>
+                            <font color="white">Release year: @Html.DisplayFor(model => model.YearOfRelease)</font>
+                        </p>
+                        <p>
+                            <font color="white">Rating: @Html.DisplayFor(model => model.rating)</font>
+                        </p>
+                        <p>
+                            <font color="white">Duration: @Html.DisplayFor(model => model.Duartion)</font>
+                        </p>
+                        <blockquote>
+                            <p>
+                                <font color="white">Summary: @Html.DisplayFor(model => model.Description)</font>
+                            </p>
+                        </blockquote>
+                        <p>
+                            <font color="white">Cast:</font>
+                            @{
+                                string phrase = @Model.actors;
+                                string[] words = phrase.Split(',');
+                                <font color="white">
+                                        <ul>
+                                        @{
+                                            foreach (var word in words)
+                                            {
+                                                <li><font color="white">@word</font></li>
+                                            }
+                                        }
+                                    </ul>
+                                </font>
+                            }
+
+                        </p>
+                       
+                        <center>
+                            <div>
+                                <a style="color:white" href="@Html.DisplayFor(model => model.WatchLink)" class="linkwatch">Watch Now</a>
+
+                                <a style="color:white" href="@Html.DisplayFor(model => model.DownloadeLink)" class="linkdownload"><font color="white">Download Now</font></a>
+                            </div>
+                        </center>
+
+                    </div>
+                </article>
+                <!-- .navigation -->
+
+            </main>
+            <!-- #main -->
+        </div>
+        <!-- #primary -->
+
+    </div>
+    <!-- #content -->
+
+    <script src='~/js/jquery.js'></script>
+    <script src='~/js/plugins.js'></script>
+    <script src='~/js/scripts.js'></script>
+    <script src='~/js/masonry.pkgd.min.js'></script>
+    <script src='~/js/validate.js'></script>
+</body>
+</html>
+

@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>@ViewData["Title"]</title>
+	@*
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Movie_Project.styles.css" asp-append-version="true" />*@
+
+	<link href="~/css/woocommerce-layout.css" rel="stylesheet" />
+	<link href="~/css/woocommerce-smallscreen.css" rel="stylesheet" />
+	<link href="~/css/woocommerce.css" rel="stylesheet" />
+	<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500,700%7CHerr+Von+Muellerhoff:400,500,700%7CQuattrocento+Sans:400,500,700' rel='stylesheet' />
+	<link href='~/css/easy-responsive-shortcodes.css' rel='stylesheet' />
+	<link href="~/css/IndexStyle.css" rel="stylesheet" />
+</head>
+@*<body >
+*@
+<body class="home page page-template page-template-template-portfolio page-template-template-portfolio-php">
+	<div id="page">
+		<div class="container">
+			<header id="masthead" class="site-header">
+				<div class="site-branding">
+					<h1 class="site-title"><a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index">Movito</a></h1>
+				</div>
+
+				<nav id="site-navigation" class="main-navigation">
+					@*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+
+					<span class="navbar-toggler-icon"></span>
+					</button>*@
+					<button class="menu-toggle">Menu</button>
+					<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+					<div class="menu-menu-1-container">
+						<ul id="menu-menu-1" class="menu">
+							<li>
+								<a asp-area="" asp-controller="Movie" asp-action="IndexAdmin">Home</a>
+							</li>
+							<li>
+								<a asp-area="" asp-controller="User" asp-action="SignUp">Sign Up</a>
+							</li>
+
+							<li>
+								<a asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+							</li>
+
+							<li>
+								<a asp-area="" asp-controller="User" asp-action="LogOut">Log Out</a>
+							</li>
+
+
+						</ul>
+					</div>
+
+				</nav>
+
+			</header>
+			<div id="content" class="site-content">
+				@RenderBody()
+				@*@if (IsSectionDefined("scripts"))
+				{
+				RenderSection("scripts");
+				}*@
+			</div>
+		</div>
+
+		<footer id="colophon" class="site-footer">
+			<div class="container">
+				<div class="site-info">
+					<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Movito</h1>
+					<a target="blank" href="https://www.wowthemes.net/">&copy; Movito - Free HTML Template by WowThemes.net</a>
+				</div>
+			</div>
+		</footer>
+		<a href="#top" class="smoothup" title="Back to top"><span class="genericon genericon-collapse"></span></a>
+
+
+	</div>
+
+
+
+	@*  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>*@
+
+	<script src='~/js/jquery.js'></script>
+	<script src='~/js/plugins.js'></script>
+	<script src='~/js/scripts.js'></script>
+	<script src='~/js/masonry.pkgd.min.js'></script>
+	<script src='~/js/validate.js'></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿body {
+    font-family: sans-serif;
+    background: linear-gradient(to right, #b92b27, #1565c0);
+}
+
+.card {
+    margin-top: 9%;
+    margin-left: 30%;
+    margin-right: 10%;    
+    border: none
+}
+
+.box {
+    width: 500px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.18);
+    text-align: center;
+    transition: 0.25s;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"]
+{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.form-group h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"] :focus{
+    width: 300px;
+    border-color: #2ecc71
+}
+
+.form-group input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    width: 70px;
+    height: 40px;
+}
+
+    .form-group input[type="submit"]:hover {
+        background: #2ecc71
+    }
+.btnbtn-primary {
+    width: 100px;
+}
+
